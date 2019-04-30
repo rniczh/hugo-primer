@@ -7,7 +7,7 @@
 {{ define "main" }}
 
 {{ $_lastMod := .Lastmod.Format "2006-01-02" }}
-{{ $_date := .Date.Format "2006-01-02" }}
+{{ $_date := .PublishDate.Format "2006-01-02" }}
 
 <!-- Title -->
 <div class="Subhead">
@@ -19,7 +19,7 @@
 
     {{ if ( default true .Params.showDate ) }}
     <div class="float-md-right">
-      <span title="Lastmod: {{ .Lastmod.Format "2006-01-02" }}. Published at: {{ .Date.Format "2006-01-02" }}.">
+      <span title="Lastmod: {{ $_lastMod }}. Published at: {{ $_date }}.">
 	{{ if ne $_lastMod $_date }}
 	  Lastmod: {{ dateFormat ( default "2006-01-02" .Site.Params.dateFormat ) .Lastmod }}
 	{{ else }}
