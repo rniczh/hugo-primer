@@ -1,14 +1,46 @@
 {{ define "title" }}
-  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 
 
 {{ define "main" }}
+
+{{ $termName := .Data.Plural }}
+
 <!-- list template -->
 <div>
 
   <h1>{{ .Title }}</h1>
   {{ .Content }}
+
+  {{ if and $.Site.Taxonomies.categories (eq $termName "categories") }}
+
+  {{ range .Paginator.Pages }}
+  <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-2">
+    <!-- single page card -->
+    <div class="mb-2">
+      <a href="{{ .URL }}" class="link-gray-dark"><span class="h2">{{ .Title }}</span></a>
+      <span class="text-right Counter Counter--gray">{{ len .Pages }}</span>
+    </div>
+    <div class="text-gray">
+      <ul style="list-style-position:inside;">
+
+	{{ range first 5 .Pages }}
+	<li>&nbsp;<a class="link-gray" href="{{ .URL }}"> {{ .Title }} </a> &nbsp; ({{ dateFormat ( default "Jan 2, 2006" .Site.Params.dateFormat ) .Lastmod }})</li>
+
+	{{ end }}
+
+	{{ if gt (len .Pages) 5 }}
+
+	<a class="btn btn-transparent link-gray mb-2" href="{{ .URL }}" role="button">…more</a>
+
+	{{ end }}
+      </ul>
+    </div>
+  </div>
+  {{ end }}
+
+  {{ else if and $.Site.Taxonomies.tags (eq $termName "tags") }}
 
   {{ range .Paginator.Pages }}
   <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-2">
@@ -29,9 +61,11 @@
   </div>
   {{ end }}
 
+
+  {{ end }}
+
   <!-- paginator nav -->
   {{ partial "paginator.html" . }}
-
 
 </div>
 

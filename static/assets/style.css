@@ -1,4 +1,22 @@
 /* custom css here */
+
+/* if you want to change to size of main content
+   there have some value you should modify:
+
+1. .container-lg max-width
+2. #main max-width
+3. #side width
+4. @media max-width
+
+if you want to enlarge the size from 1100px to 1300px:
+
+1. 1100px --> 1300px
+2. 1300px -  230px = 1070px
+3. unchanged
+4. 1300px
+
+ */
+
 html,
 body {
   height: 100%;
@@ -18,12 +36,16 @@ body {
     "main side"
     "footer side";
 }
+.container-lg {
+    max-width: 1100px;
+}
+
 #header {
   grid-area: header;
 }
 #main {
   grid-area: main;
-  max-width: 782px;
+  max-width: 870px;
 }
 #side {
   grid-area: side;
@@ -85,14 +107,70 @@ aside {
   margin-top: 0.3rem;
 }
 
-@media screen and (max-width: 1012px) {
+/* Image-gallery:
+
+Usage:
+
+<div class="image-gallery">
+  <img style="float:right;" src="/path/to/image"/>
+     write something here
+  <div class="clear"></div>
+</div>
+
+write something outside
+
+*/
+div.image-gallery {
+  display: block;
+}
+
+div.image-gallery img {
+  display: block;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  width: 0;
+  font-size: 1px;
+  line-height: 0;
+}
+
+/* a inconspicuous color href link
+
+Usage:
+
+<a class="p" href="..."> ... </a>
+
+*/
+
+a.p {
+  color: #364146;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #cccccc;
+  text-decoration-color: #cccccc;
+}
+
+
+a.p:hover {
+  -webkit-text-decoration-color: black;
+  text-decoration-color: black;
+}
+
+a.p:active {
+  color: #878a8e;
+  -webkit-text-decoration-color: #006E94;
+  text-decoration-color: #006E94;
+}
+
+@media screen and (max-width: 1100px) {
   #holy {
     display: block;
   }
   #header {
   }
   #main {
-    max-width: 1012px;
+    max-width: 1100px;
   }
   #side {
     display: none;

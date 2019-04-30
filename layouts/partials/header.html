@@ -1,3 +1,4 @@
+<link rel="shortcut icon" href="/favicon.ico">
 <nav class="UnderlineNav UnderlineNav--right px-2">
   <a class="UnderlineNav-actions muted-link h2" href="{{ .Site.BaseURL }}">
     {{ .Site.Title }}
@@ -12,13 +13,13 @@
       {{ .Pre }}
       <span class="UnderlineNav-item {{ if $currentPage.HasMenuCurrent "main" . }}selected{{ end }}">{{ .Name }}</span>
       <div class="Box Box--condensed position-absolute dropdown-content ">
-        {{ range .Children }}
-        <div class="Box-body" style="">
-          <a href="{{ .URL }}">
-            {{ .Name }}
-          </a>
-        </div>
-        {{ end }}
+	{{ range .Children }}
+	<div class="Box-body" style="">
+	  <a href="{{ .URL }}">
+	    {{ .Name }}
+	  </a>
+	</div>
+	{{ end }}
       </div>
     </div>
     {{ else }}

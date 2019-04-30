@@ -36,7 +36,7 @@
     <meta name="twitter:creator" content="@{{ .Site.Params.Twitter }}">
     <meta name="twitter:title" content="{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
     <meta name="twitter:description" content="{{ .Description | default .Summary }}|{{ .Site.Params.Description }}">
-    <meta name="twitter:image" content="{{ .Site.BaseURL }}twitter-card.png">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ (default "img/twitter-card.png" .Params.twImage) }}">
     {{ end }}
 
 
@@ -50,25 +50,25 @@
     <div id="holy" class="container-lg bg-white h-100">
 
       <div id="header" class="px-1 bg-white">
-        {{ partial "header.html" . }}
+	{{ partial "header.html" . }}
       </div>
 
       <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
-        {{ block "main" . }}
-        {{ end }}
+	{{ block "main" . }}
+	{{ end }}
       </div>
 
       <div id="side" class="pr-1 bg-white">
-        <aside class="pr-3">
-          {{ block "side" . }}
-          <div id="toc" class="mb-3">
-          </div>
-          {{ end }}
-        </aside>
+	<aside class="pr-3">
+	  {{ block "side" . }}
+	  <div id="toc" class="mb-3">
+	  </div>
+	  {{ end }}
+	</aside>
       </div>
 
       <div id="footer" class="pt-2 pb-3 bg-white text-center">
-        {{ partial "footer.html" . }}
+	{{ partial "footer.html" . }}
       </div>
     </div>
 
