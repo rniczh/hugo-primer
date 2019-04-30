@@ -168,15 +168,6 @@ a.p:active {
   src: url("/fonts/VarelaRound-Regular.otf") format("opentype");
   font-style: normal;
 }
-@font-face {
-    font-family: 'Varela Round';
-    font-weight: bold;
-    src: url("/fonts/VarelaRound-Regular.otf") format("opentype");
-
-}
-
-
-
 
 @media screen and (max-width: 1100px) {
   #holy {
